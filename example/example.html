@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple MD editor</title>
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/editor.js"></script>
+</head>
+<body>
+    <div id="mdeditor"></div>
+    <button onclick="save()">Save</button>
+    <button onclick="load()">Load example</button>
+    <script>
+        var editor = new Editor('mdeditor');
+        editor.render().renderTextarea();
+
+        function save () {
+            alert("Open console to see result");
+            console.log(editor.getValue());
+        }
+
+        function load() {
+            var editorValue = "**Some header** \n" +
+            "*Some italic* \n" + 
+            "~~Strikethrough~~ \n" +
+            "` \n" + 
+            'var codebase = "some code"; \n' +
+            "console.log(codebase) \n" +
+            "` \n";
+            editor.setValue(editorValue);
+            editor.renderResult();
+        }
+    </script>
+</body>
+</html>
